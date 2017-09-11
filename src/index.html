@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>editer</title>
+    <style>
+        div {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+<body>
+<div class="editor-box">
+    <ul class="editor-nav">
+        <li>
+            <label class="editor-nav-label">
+                <input type="checkbox" value="italic" onchange="execCommandFun('italic')">
+                <span class="editor-nav-icon">斜体</span>
+            </label>
+        </li>
+        <li>
+            <label class="editor-nav-label">
+                <input type="checkbox" value="bold" onchange="execCommandFun('bold')">
+                <span class="editor-nav-icon">粗体</span>
+            </label>
+        </li>
+        <li>
+            <label class="editor-nav-label">
+                <input type="checkbox" value="underline" onchange="execCommandFun('underline')">
+                <span class="editor-nav-icon">下划线</span>
+
+            </label>
+        </li>
+        <li>
+            <label class="editor-nav-label">
+                <input type="checkbox" value="insertUnorderedList" onchange="execCommandFun('insertUnorderedList')">
+                <span class="editor-nav-icon">列表</span>
+
+            </label>
+        </li>
+        <li>
+            <label class="editor-nav-label">
+                <input type="checkbox" value="justifyCenter" onchange="execCommandFun('justifyCenter')">
+                <span class="editor-nav-icon">居中</span>
+            </label>
+        </li>
+        <li><span class="editor-nav-icon">表情</span></li>
+        <li><span class="editor-nav-icon">图片</span></li>
+        <li><span class="editor-nav-icon">视频</span></li>
+        <li><span class="editor-nav-icon">链接</span></li>
+        <li><span class="editor-nav-icon" onclick="execCommandFun('insertHorizontalRule')">分割线</span></li>
+    </ul>
+    <div id="editorContent" class="editor-content" contenteditable="true">
+
+    </div>
+</div>
+</body>
+</html>

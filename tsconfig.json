@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "suppressImplicitAnyIndexErrors": true,
+    //    "removeComments": true,
+    "module": "es6",
+    "target": "es6",
+    "jsx": "preserve",
+    "lib":[
+      "dom",
+      "es6",
+      "esnext.asynciterable"
+    ]
+    //    "types": ["node"],
+    //    "typeRoots": ["node_modules/@types"]
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
