@@ -43,5 +43,5 @@
   "devDependencies": {
     "webpack-dev-server": "^2.6.1"
   },
-  "license": "Apache"
+  "license": "Apache-2.0"
 }
