@@ -1,5 +1,6 @@
 require('./index.scss');
 
+
 let editorContent = document.getElementById('editorContent');
 
 function execCommandFun(aCommandName:string){

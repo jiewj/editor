@@ -83,14 +83,14 @@ class WebpackBaseConfig {
           },
           {
             test:/\.(png|jpg)$/,
-            use:['file-loader']
+            use:['url-loader?limit=8192']
           }
         ]
       },
 
       output: {
         path: path.resolve('./dist'),
-        filename: 'js/index.[hash].js', //[name].[chunkhash].js
+        filename: 'js/[name].[hash].js', //[name].[chunkhash].js
         // publicPath: 'http://club.com/'
       },
 

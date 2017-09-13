@@ -20,6 +20,7 @@
     "start": "npm run serve:dev"
   },
   "dependencies": {
+    "@types/node": "^8.0.17",
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",
     "babel-plugin-transform-runtime": "^6.23.0",
@@ -35,12 +36,12 @@
     "rimraf": "^2.6.1",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
-    "webpack": "^3.4.1",
-    "@types/node": "^8.0.17",
     "ts-loader": "^2.3.2",
-    "typescript": "^2.4.2"
+    "typescript": "^2.4.2",
+    "webpack": "^3.4.1"
   },
   "devDependencies": {
+    "url-loader": "^0.5.9",
     "webpack-dev-server": "^2.6.1"
   },
   "license": "Apache-2.0"
