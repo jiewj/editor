@@ -71,6 +71,16 @@
   }
 }
 
+.iframeLink:checked ~ iframe{
+  display: block;
+}
+.editor-frame-link{
+  position: absolute;
+  left: 50%;
+  display: none;
+  margin-top: 10px;
+  transform: translateX(-40%);
+}
 .editor-content {
   width: 100%;
   height: 500px;

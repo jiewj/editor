@@ -37,7 +37,12 @@ function emojiHtml(response: any) {
 function addEmoji(obj: any) {
     let html = `<img src="${obj.src}" alt="${obj.alt}"/>`;
     execCommandFun('insertHTML', html);
+}
+function addLink(obj?: any) {
+    console.dir(obj);
 
+    let html = `${obj.value}`;
+    execCommandFun('insertHTML', html);
 }
 function imageFileFun(obj: any) {
     const files = obj.files;
@@ -61,6 +66,16 @@ function videoFileFun(obj: any) {
 }
 
 let editorContent = document.getElementById('editorContent');
+// let editorFrameLink = document.getElementsByTagName('iframe')['editorFrameLink'];
+//
+// let frameDocument = editorFrameLink.contentDocument;
+// console.dir(frameDocument);
+// editorFrameLink.onload = ()=>{
+//     console.log(1);
+// };
+
+// let addLinkID = frameDocument.getElementById('addLink');
+// console.log(addLinkID);
 
 function execCommandFun(aCommandName: string, aValueArgument: any = null) {
     editorContentFocus();
@@ -76,3 +91,4 @@ function editorContentFocus(){
 (<any> window).addEmoji = addEmoji;
 (<any> window).imageFileFun = imageFileFun;
 (<any> window).videoFileFun = videoFileFun;
+(<any> window).addLink = addLink;

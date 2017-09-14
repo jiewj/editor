@@ -38,6 +38,12 @@ class WebpackDevConfig extends WebpackBaseConfig {
         new webpack.HotModuleReplacementPlugin(),
         new htmlWebpackPlugin({
           template: 'index.html',
+          filename: 'index.html'
+        }),
+        new htmlWebpackPlugin({
+          template: 'editor-link.html',
+          filename: 'editor-link.html',
+          chunks: []
         })
         // new webpack.optimize.CommonsChunkPlugin({
         //   name: 'vendor',

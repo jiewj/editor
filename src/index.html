@@ -55,7 +55,7 @@
         </li>
         <li>
             <lable class="editor-nav-label">
-                <input type="file" multiple accept="image" onchange="imageFileFun(this)">
+                <input type="file" multiple accept="image/*" onchange="imageFileFun(this)">
                 <span class="editor-nav-icon">图片</span>
             </lable>
         </li>
@@ -65,7 +65,14 @@
                 <span class="editor-nav-icon">视频</span>
             </label>
         </li>
-        <li><span class="editor-nav-icon">链接</span></li>
+        <li>
+            <label class="editor-nav-label">
+                <input type="checkbox" class="iframeLink"/>
+                <span class="editor-nav-icon">链接</span>
+
+                <iframe class="editor-frame-link" id="editorFrameLink" frameborder="0" width="300" height="100" src="./editor-link.html"></iframe>
+            </label>
+        </li>
         <li><span class="editor-nav-icon" onclick="execCommandFun('insertHorizontalRule')">分割线</span></li>
     </ul>
     <div id="editorContent" class="editor-content" contenteditable="true">
