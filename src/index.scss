@@ -13,6 +13,7 @@
   background-color: black;
 
   & li {
+    position: relative;
     float: left;
     list-style: none;
     margin: 0 3px 0;
@@ -30,6 +31,41 @@
     }
     input:checked + span {
       background-color: darkgray;
+    }
+  }
+}
+
+.emojiIcon:checked ~ div{
+  display: block;
+}
+.editor-emoji-box{
+  position: absolute;
+  left: 50%;
+  display: none;
+  padding: 10px 12px;
+  margin-top: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transform: translateX(-50%);
+}
+.editor-emoji-table {
+  border-collapse: collapse;
+
+  td{
+    padding: 0;
+    margin: 0;
+    line-height: 0;
+    border: 1px solid #ddd;
+  }
+  &-td {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background: aliceblue no-repeat center center /26px 26px;
+    cursor: pointer;
+    &:hover{
+      margin-top: -2px;
     }
   }
 }
