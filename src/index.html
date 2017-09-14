@@ -41,16 +41,10 @@
             </label>
         </li>
         <li>
-            <label class="editor-nav-label">
-                <input type="radio" name="justify" value="justifyCenter" onchange="execCommandFun('justifyCenter')">
-                <span class="editor-nav-icon">居中</span>
-            </label>
+            <span class="editor-nav-icon" onclick="execCommandFun('justifyCenter')">居中</span>
         </li>
         <li>
-            <label class="editor-nav-label">
-                <input type="radio" name="justify" value="justifyFull" onchange="execCommandFun('justifyFull')">
-                <span class="editor-nav-icon">对齐</span>
-            </label>
+            <span class="editor-nav-icon" onclick="execCommandFun('justifyFull')">对齐</span>
         </li>
         <li>
             <label class="editor-nav-label">
@@ -61,11 +55,16 @@
         </li>
         <li>
             <lable class="editor-nav-label">
-                <input type="file" onchange="fileFun(this)">
+                <input type="file" multiple accept="image" onchange="imageFileFun(this)">
                 <span class="editor-nav-icon">图片</span>
             </lable>
         </li>
-        <li><span class="editor-nav-icon">视频</span></li>
+        <li>
+            <label class="editor-nav-label">
+                <input type="file" multiple accept="video/mp4" onchange="videoFileFun(this)">
+                <span class="editor-nav-icon">视频</span>
+            </label>
+        </li>
         <li><span class="editor-nav-icon">链接</span></li>
         <li><span class="editor-nav-icon" onclick="execCommandFun('insertHorizontalRule')">分割线</span></li>
     </ul>

@@ -39,13 +39,23 @@ function addEmoji(obj: any) {
     execCommandFun('insertHTML', html);
 
 }
-function fileFun(obj: any) {
+function imageFileFun(obj: any) {
     const files = obj.files;
     let html = '';
     for (let i = 0; i < files.length; i++) {
         console.dir(files[i]);
         console.log(URL.createObjectURL(files[i]));
         html += `<img src="${URL.createObjectURL(files[i])}"/>`;
+    }
+    execCommandFun('insertHTML', html);
+}
+function videoFileFun(obj: any) {
+    const files = obj.files;
+    let html = '';
+    for (let i = 0; i < files.length; i++) {
+        console.dir(files[i]);
+        console.log(URL.createObjectURL(files[i]));
+        html += `<video contenteditable="false" controls src="${URL.createObjectURL(files[i])}"></video>`;
     }
     execCommandFun('insertHTML', html);
 }
@@ -64,4 +74,5 @@ function editorContentFocus(){
 
 (<any> window).execCommandFun = execCommandFun;
 (<any> window).addEmoji = addEmoji;
-(<any> window).fileFun = fileFun;
+(<any> window).imageFileFun = imageFileFun;
+(<any> window).videoFileFun = videoFileFun;
