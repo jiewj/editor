@@ -1,5 +1,5 @@
 .editor-box {
-  width: 500px;
+  width: 600px;
   height: 530px;
   border: 1px solid #000;
   user-select: none;
@@ -28,6 +28,8 @@
     input {
       position: absolute;
       opacity: 0;
+      width: 100%;
+      height: 100%;
     }
     input:checked + span {
       background-color: darkgray;
@@ -47,7 +49,7 @@
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 5px;
-  transform: translateX(-50%);
+  transform: translateX(-40%);
 }
 .editor-emoji-table {
   border-collapse: collapse;
@@ -60,12 +62,11 @@
   }
   &-td {
     display: inline-block;
-    width: 32px;
-    height: 32px;
-    background: aliceblue no-repeat center center /26px 26px;
+    padding: 4px;
+    background-color: aliceblue;
     cursor: pointer;
     &:hover{
-      margin-top: -2px;
+      transform: translateY(-4px);
     }
   }
 }

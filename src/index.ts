@@ -22,8 +22,8 @@ function emojiHtml(response: any) {
             emojiTd = '';
         } else {
             emojiTd += `
-    <td>
-    <span class="editor-emoji-table-td" data-name="${value.name}" style="background-image: url(${value.base64})"></span>
+<td>
+    <img class="editor-emoji-table-td" src="${value.base64}" alt="${value.name}" onclick="addEmoji(this)"/>
 </td>`;
             if (emoji.length == emoji.indexOf(value) + 1) {
                 emojiTr += '<tr>' + emojiTd + '</tr>';
@@ -31,14 +31,37 @@ function emojiHtml(response: any) {
         }
     });
     emojiTable.innerHTML = '<table class="editor-emoji-table">' + emojiTr + '</table>';
+
 }
 
+function addEmoji(obj: any) {
+    let html = `<img src="${obj.src}" alt="${obj.alt}"/>`;
+    execCommandFun('insertHTML', html);
+
+}
+function fileFun(obj: any) {
+    const files = obj.files;
+    let html = '';
+    for (let i = 0; i < files.length; i++) {
+        console.dir(files[i]);
+        console.log(URL.createObjectURL(files[i]));
+        html += `<img src="${URL.createObjectURL(files[i])}"/>`;
+    }
+    execCommandFun('insertHTML', html);
+}
 
 let editorContent = document.getElementById('editorContent');
 
-function execCommandFun(aCommandName: string) {
-    document.execCommand(aCommandName, false, null);
+function execCommandFun(aCommandName: string, aValueArgument: any = null) {
+    editorContentFocus();
+    document.execCommand(aCommandName, false, aValueArgument);
+}
+function editorContentFocus(){
     editorContent.focus();
 }
 
+(<any> window).editorContentFocus = editorContentFocus;
+
 (<any> window).execCommandFun = execCommandFun;
+(<any> window).addEmoji = addEmoji;
+(<any> window).fileFun = fileFun;

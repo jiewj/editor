@@ -42,18 +42,29 @@
         </li>
         <li>
             <label class="editor-nav-label">
-                <input type="checkbox" value="justifyCenter" onchange="execCommandFun('justifyCenter')">
+                <input type="radio" name="justify" value="justifyCenter" onchange="execCommandFun('justifyCenter')">
                 <span class="editor-nav-icon">居中</span>
             </label>
         </li>
         <li>
             <label class="editor-nav-label">
-                <input type="checkbox" class="emojiIcon"/>
+                <input type="radio" name="justify" value="justifyFull" onchange="execCommandFun('justifyFull')">
+                <span class="editor-nav-icon">对齐</span>
+            </label>
+        </li>
+        <li>
+            <label class="editor-nav-label">
+                <input type="checkbox" class="emojiIcon" onchange="editorContentFocus()"/>
                 <span class="editor-nav-icon">表情</span>
                 <div class="editor-emoji-box" id="emojiTable"></div>
             </label>
         </li>
-        <li><span class="editor-nav-icon">图片</span></li>
+        <li>
+            <lable class="editor-nav-label">
+                <input type="file" onchange="fileFun(this)">
+                <span class="editor-nav-icon">图片</span>
+            </lable>
+        </li>
         <li><span class="editor-nav-icon">视频</span></li>
         <li><span class="editor-nav-icon">链接</span></li>
         <li><span class="editor-nav-icon" onclick="execCommandFun('insertHorizontalRule')">分割线</span></li>
