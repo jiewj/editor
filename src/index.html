@@ -16,26 +16,26 @@
     <ul class="editor-nav">
         <li>
             <label class="editor-nav-label">
-                <input type="checkbox" value="italic" onchange="execCommandFun('italic')">
+                <input type="checkbox" data-type="italic" value="italic" onchange="execCommandFun('italic')">
                 <span class="editor-nav-icon">斜体</span>
             </label>
         </li>
         <li>
             <label class="editor-nav-label">
-                <input type="checkbox" value="bold" onchange="execCommandFun('bold')">
+                <input type="checkbox" data-type="editor" value="bold" onchange="execCommandFun('bold')">
                 <span class="editor-nav-icon">粗体</span>
             </label>
         </li>
         <li>
             <label class="editor-nav-label">
-                <input type="checkbox" value="underline" onchange="execCommandFun('underline')">
+                <input type="checkbox" data-type="editor" value="underline" onchange="execCommandFun('underline')">
                 <span class="editor-nav-icon">下划线</span>
 
             </label>
         </li>
         <li>
             <label class="editor-nav-label">
-                <input type="checkbox" value="insertUnorderedList" onchange="execCommandFun('insertUnorderedList')">
+                <input type="checkbox" data-type="editor" value="insertUnorderedList" onchange="execCommandFun('insertUnorderedList')">
                 <span class="editor-nav-icon">列表</span>
 
             </label>
@@ -78,8 +78,10 @@
     <div class="editor-scroll">
         <div class="editor-scroll-top"></div>
     </div>
-    <div id="editorContent" class="editor-content" contenteditable="true">
+    <div class="editor-content-box">
+        <div id="editorContent" class="editor-content" contenteditable="true">
 
+        </div>
     </div>
 </div>
 </body>

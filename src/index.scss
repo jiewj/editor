@@ -1,5 +1,5 @@
-$editor-box-height: 440;
-$editor-nav-height: 40;
+$editor-box-height: 430;
+$editor-nav-height: 30;
 $editor-content-height: 400;
 .editor-box {
   position: relative;
@@ -100,17 +100,27 @@ $editor-content-height: 400;
 }
 
 .editor-content {
+  &-box{
+    position: relative;
+    width: 100%;
+    height: $editor-content-height + px;
+    padding: 10px 20px 10px 10px;
+    overflow-x: hidden;
+    box-sizing: border-box;
+  }
   width: 100%;
-  height: $editor-content-height + px;
-  overflow-x: hidden;
-  padding: 10px 20px;
+  min-height: 100%;
   outline: none;
-  box-sizing: border-box;
+  &-img{
+    display: block;
+    margin: 10px auto;
+  }
 }
 
 .editor-scroll {
   position: absolute;
   right: 0;
+  z-index: 1;
   width: 20px;
   height: $editor-content-height+px;
   background-color: #fff;
