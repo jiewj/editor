@@ -23,7 +23,7 @@ function emojiHtml(response: any) {
         } else {
             emojiTd += `
 <td>
-    <img class="editor-emoji-table-td" src="${value.base64}" alt="${value.name}" onclick="addEmoji(this)"/>
+    <img class="editor-emoji-table-td" src="${value.base64}" alt="${value.name}" onclick="event.stopPropagation();addEmoji(this)"/>
 </td>`;
             if (emoji.length == emoji.indexOf(value) + 1) {
                 emojiTr += '<tr>' + emojiTd + '</tr>';
@@ -39,9 +39,7 @@ function addEmoji(obj: any) {
     execCommandFun('insertHTML', html);
 }
 function addLink(obj?: any) {
-    console.dir(obj);
-
-    let html = `${obj.value}`;
+    let html = `<a href="${obj.value}" target="_blank">${obj.value}</a>&nbsp;`;
     execCommandFun('insertHTML', html);
 }
 function imageFileFun(obj: any) {
@@ -66,16 +64,6 @@ function videoFileFun(obj: any) {
 }
 
 let editorContent = document.getElementById('editorContent');
-// let editorFrameLink = document.getElementsByTagName('iframe')['editorFrameLink'];
-//
-// let frameDocument = editorFrameLink.contentDocument;
-// console.dir(frameDocument);
-// editorFrameLink.onload = ()=>{
-//     console.log(1);
-// };
-
-// let addLinkID = frameDocument.getElementById('addLink');
-// console.log(addLinkID);
 
 function execCommandFun(aCommandName: string, aValueArgument: any = null) {
     editorContentFocus();
@@ -92,3 +80,27 @@ function editorContentFocus(){
 (<any> window).imageFileFun = imageFileFun;
 (<any> window).videoFileFun = videoFileFun;
 (<any> window).addLink = addLink;
+
+
+let editorScrollTop = document.getElementsByClassName('editor-scroll-top')[0] as HTMLElement;
+editorContent.addEventListener('scroll',function () {
+    let top = Math.trunc((this.scrollTop) / this.scrollHeight * this.clientHeight);
+    let topMax = Math.trunc((this.scrollHeight - this.clientHeight) / this.scrollHeight * this.clientHeight);
+    let height = Math.trunc((this.clientHeight - topMax) / this.clientHeight * 1000) /1000;
+    editorScrollTop.style.transform = `translateY(${top}px) scaleY(${height})`;
+});
+
+let emojiIcon = document.getElementsByClassName('emojiIcon')[0] as HTMLInputElement;
+let iframeLink = document.getElementsByClassName('iframeLink')[0] as HTMLInputElement;
+
+
+document.addEventListener('click',function (e) {
+    let target = e.target as HTMLElement;
+    if(target.className != 'emojiIcon'){
+        emojiIcon.checked = false;
+    }
+    if(target.className != 'iframeLink'){
+        iframeLink.checked = false;
+    }
+
+});

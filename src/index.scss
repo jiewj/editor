@@ -1,28 +1,37 @@
+$editor-box-height: 440;
+$editor-nav-height: 40;
+$editor-content-height: 400;
 .editor-box {
+  position: relative;
   width: 600px;
-  height: 530px;
-  border: 1px solid #000;
+  height: $editor-box-height + px;
+  margin: 50px auto 0;
+  border: 1px solid #eee;
   user-select: none;
 }
 
 .editor-nav {
-  height: 30px;
+  height: $editor-nav-height + px;
   padding: 0;
   margin: 0;
-  line-height: 30px;
-  background-color: black;
+  line-height: $editor-nav-height + px;
+  background-color: #eee;
 
   & li {
     position: relative;
     float: left;
     list-style: none;
     margin: 0 3px 0;
+    color: #ccc;
+
+    &:hover{
+      color: darkturquoise;
+    }
   }
 
   &-icon {
-    padding: 3px;
-    background-color: aliceblue;
-    border-radius: 5px;
+    padding: 0 3px;
+    cursor: pointer;
   }
   &-label {
     input {
@@ -30,19 +39,23 @@
       opacity: 0;
       width: 100%;
       height: 100%;
+      cursor: pointer;
+
     }
     input:checked + span {
-      background-color: darkgray;
+      color: cornflowerblue;
     }
   }
 }
 
-.emojiIcon:checked ~ div{
+.emojiIcon:checked ~ div {
   display: block;
 }
-.editor-emoji-box{
+
+.editor-emoji-box {
   position: absolute;
   left: 50%;
+  z-index: 3;
   display: none;
   padding: 10px 12px;
   margin-top: 10px;
@@ -51,10 +64,11 @@
   border-radius: 5px;
   transform: translateX(-40%);
 }
+
 .editor-emoji-table {
   border-collapse: collapse;
 
-  td{
+  td {
     padding: 0;
     margin: 0;
     line-height: 0;
@@ -65,28 +79,49 @@
     padding: 4px;
     background-color: aliceblue;
     cursor: pointer;
-    &:hover{
+    &:hover {
       transform: translateY(-4px);
     }
   }
 }
 
-.iframeLink:checked ~ iframe{
+.iframeLink:checked ~ iframe {
   display: block;
 }
-.editor-frame-link{
+
+.editor-frame-link {
   position: absolute;
   left: 50%;
+  z-index: 3;
   display: none;
   margin-top: 10px;
+  border-radius: 5px;
   transform: translateX(-40%);
 }
+
 .editor-content {
   width: 100%;
-  height: 500px;
+  height: $editor-content-height + px;
   overflow-x: hidden;
-  padding: 10px;
-  background-color: aliceblue;
+  padding: 10px 20px;
   outline: none;
   box-sizing: border-box;
+}
+
+.editor-scroll {
+  position: absolute;
+  right: 0;
+  width: 20px;
+  height: $editor-content-height+px;
+  background-color: #fff;
+
+  &-top {
+    position: relative;
+    width: 6px;
+    height: $editor-content-height +px;
+    margin-left: 7px;
+    background-color: #eee;
+    border-radius: 3px;
+    transform-origin: 50% 0;
+  }
 }
