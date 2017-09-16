@@ -65,51 +65,77 @@ function videoFileFun(obj: any) {
 
 let editorContent = document.getElementById('editorContent');
 
-editorContent.addEventListener('click', function (e) {
-    let target = e.target as HTMLElement;
-    // let type = document.querySelectorAll('[data-type="editor"]');
+editorContent.addEventListener('mouseup', function () {
+    let focusNode = getSelection().focusNode.parentNode;
 
-    console.dir(target);
-    let checked = {'I': 'italic','B': 'bold','U': 'underline','LI': 'insertUnorderedList'};
-    let hasTag:any = [];
+    let checked = {
+        'I': 'italic',
+        'B': 'bold',
+        'U': 'underline',
+        'LI': 'insertUnorderedList',
+        'center': 'justifyCenter',
+        'justify': 'justifyFull'
+    };
 
-/*    for (let i = 0; i < type.length; i++) {
-        if ((type[i] as HTMLInputElement).checked) {
-            switch ((type[i] as HTMLInputElement).defaultValue) {
-                case 'italic':
-                    checked = Object.assign({}, checked, {'I': 'italic'});
-                    break;
-                case 'bold':
-                    checked = Object.assign({}, checked, {'B': 'bold'});
-                    break;
-                case 'underline':
-                    checked = Object.assign({}, checked, {'U': 'underline'});
-                    break;
-                case 'insertUnorderedList':
-                    checked = Object.assign({}, checked, {'LI': 'insertUnorderedList'});
-                    break;
-                default:
-                    break;
-            }
+    let hasTag: any = [];
+
+    nodeName(focusNode);
+
+    if (hasTag.length > 0) {
+        let dataType = document.querySelectorAll(`[data-type]`);
+        for (let i = 0; i < dataType.length; i++) {
+            (dataType[i] as HTMLInputElement).checked = false;
         }
-    }*/
+        hasTag.forEach((value: any) => {
+            let type = document.querySelectorAll(`[data-type="${checked[value]}"]`)[0] as HTMLInputElement;
+            type.checked = true;
+        });
+    }
 
-    nodeName(target);
+    console.dir(getSelection());
+    let first = getSelection().getRangeAt(0);
+    console.dir(first);
 
-    console.log(hasTag);
-    hasTag.forEach((value:any)=>{
-       console.log(value);
-       console.log(checked[value]);
-        let type = document.querySelectorAll(`[data-type="${checked[value]}"]`)[0] as HTMLInputElement;
-        type.checked = true;
 
-        console.log(type);
-    });
+    if (!first.collapsed) {
+        let start = first.startContainer;
+        let end = first.endContainer;
+
+        console.log(start != end);
+
+        if (start != end) {
+            if (end.parentNode.nodeName in checked) {
+
+                if (start.parentNode && (start.parentNode == end.parentNode)) {
+                    parentFun(start.parentNode);
+                }
+
+            } else {
+                console.log(end)
+
+            }
+            console.dir(first.startContainer);
+            console.dir(first.endContainer);
+        } else {
+        }
+
+    }
+
+
+    function parentFun(obj:any){
+        console.dir(obj);
+    }
+
 
     function nodeName(obj: any) {
         if (obj.nodeName in checked) {
             hasTag.push(obj.nodeName);
             nodeName(obj.parentNode);
+        } else {
+            let textAlign = obj.style.textAlign;
+            if (textAlign) {
+                hasTag.push(textAlign);
+            }
         }
 
     }

@@ -22,29 +22,39 @@
         </li>
         <li>
             <label class="editor-nav-label">
-                <input type="checkbox" data-type="editor" value="bold" onchange="execCommandFun('bold')">
+                <input type="checkbox" data-type="bold" value="bold" onchange="execCommandFun('bold')">
                 <span class="editor-nav-icon">粗体</span>
             </label>
         </li>
         <li>
             <label class="editor-nav-label">
-                <input type="checkbox" data-type="editor" value="underline" onchange="execCommandFun('underline')">
+                <input type="checkbox" data-type="underline" value="underline" onchange="execCommandFun('underline')">
                 <span class="editor-nav-icon">下划线</span>
 
             </label>
         </li>
         <li>
             <label class="editor-nav-label">
-                <input type="checkbox" data-type="editor" value="insertUnorderedList" onchange="execCommandFun('insertUnorderedList')">
+                <input type="checkbox" data-type="insertUnorderedList" value="insertUnorderedList" onchange="execCommandFun('insertUnorderedList')">
                 <span class="editor-nav-icon">列表</span>
 
             </label>
         </li>
         <li>
-            <span class="editor-nav-icon" onclick="execCommandFun('justifyCenter')">居中</span>
+            <label class="editor-nav-label">
+                <input type="radio" name="editor-justify" data-type="justifyCenter" value="justifyCenter" onchange="execCommandFun('justifyCenter')">
+                <span class="editor-nav-icon">居中</span>
+
+            </label>
+            <!--<span class="editor-nav-icon" onclick="execCommandFun('justifyCenter')">居中</span>-->
         </li>
         <li>
-            <span class="editor-nav-icon" onclick="execCommandFun('justifyFull')">对齐</span>
+            <label class="editor-nav-label">
+                <input type="radio" name="editor-justify" data-type="justifyFull" value="justifyFull" onchange="execCommandFun('justifyFull')">
+                <span class="editor-nav-icon">对齐</span>
+
+            </label>
+            <!--<span class="editor-nav-icon" onclick="execCommandFun('justifyFull')">对齐</span>-->
         </li>
         <li>
             <label class="editor-nav-label">
