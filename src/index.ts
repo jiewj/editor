@@ -73,13 +73,14 @@ editorContent.addEventListener('mouseup', function () {
         'B': 'bold',
         'U': 'underline',
         'LI': 'insertUnorderedList',
+        'UL': '',
         'center': 'justifyCenter',
         'justify': 'justifyFull'
     };
 
     let hasTag: any = [];
 
-    nodeName(focusNode);
+    nodeName(focusNode,hasTag);
 
     if (hasTag.length > 0) {
         let dataType = document.querySelectorAll(`[data-type]`);
@@ -87,8 +88,10 @@ editorContent.addEventListener('mouseup', function () {
             (dataType[i] as HTMLInputElement).checked = false;
         }
         hasTag.forEach((value: any) => {
-            let type = document.querySelectorAll(`[data-type="${checked[value]}"]`)[0] as HTMLInputElement;
-            type.checked = true;
+            if (value != 'UL') {
+                let type = document.querySelectorAll(`[data-type="${checked[value]}"]`)[0] as HTMLInputElement;
+                type.checked = true;
+            }
         });
     }
 
@@ -96,50 +99,36 @@ editorContent.addEventListener('mouseup', function () {
     let first = getSelection().getRangeAt(0);
     console.dir(first);
 
-
     if (!first.collapsed) {
         let start = first.startContainer;
         let end = first.endContainer;
-
         console.log(start != end);
-
         if (start != end) {
-            if (end.parentNode.nodeName in checked) {
-
-                if (start.parentNode && (start.parentNode == end.parentNode)) {
-                    parentFun(start.parentNode);
-                }
-
-            } else {
-                console.log(end)
-
-            }
-            console.dir(first.startContainer);
-            console.dir(first.endContainer);
-        } else {
+            console.log(end);
+            let startParentNode:any = [], endParentNode:any = [];
+            nodeName(start.parentNode, startParentNode);
+            nodeName(end.parentNode, endParentNode);
+            console.dir(startParentNode);
+            console.dir(endParentNode);
         }
-
     }
 
 
-    function parentFun(obj:any){
-        console.dir(obj);
-    }
 
-
-    function nodeName(obj: any) {
+    function nodeName(obj: any,val:any) {
         if (obj.nodeName in checked) {
-            hasTag.push(obj.nodeName);
-            nodeName(obj.parentNode);
+            val.push(obj.nodeName);
+            nodeName(obj.parentNode,val);
         } else {
             let textAlign = obj.style.textAlign;
             if (textAlign) {
-                hasTag.push(textAlign);
+                val.push(textAlign);
             }
         }
 
     }
-});
+})
+;
 
 
 function execCommandFun(aCommandName: string, aValueArgument: any = null) {
