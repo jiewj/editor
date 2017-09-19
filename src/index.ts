@@ -81,7 +81,7 @@ editorContent.addEventListener('mouseup', function () {
     let hasTag: any = [];
 
     let first = getSelection().getRangeAt(0);
-    
+
     if (!first.collapsed && first.startContainer != first.endContainer) {
         nodeName(first.commonAncestorContainer);
     } else {

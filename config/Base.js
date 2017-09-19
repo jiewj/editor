@@ -84,6 +84,10 @@ class WebpackBaseConfig {
           {
             test:/\.(png|jpg)$/,
             use:['url-loader?limit=8192']
+          },
+          {
+            test:/\.(eot|svg|ttf|woff)$/,
+            use:['file-loader']
           }
         ]
       },

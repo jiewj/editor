@@ -1,6 +1,23 @@
 $editor-box-height: 430;
 $editor-nav-height: 30;
 $editor-content-height: 400;
+
+@font-face {
+  font-family: 'iconfont';
+  src: url('./font/iconfont.eot');
+  src: url('./font/iconfont.eot?#iefix') format('embedded-opentype'),
+  url('./font/iconfont.woff') format('woff'),
+  url('./font/iconfont.ttf') format('truetype'),
+  url('./font/iconfont.svg#iconfont') format('svg');
+}
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 24px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 .editor-box {
   position: relative;
   width: 600px;
@@ -15,7 +32,7 @@ $editor-content-height: 400;
   padding: 0;
   margin: 0;
   line-height: $editor-nav-height + px;
-  background-color: #eee;
+  background-color: #f9f9f9;
 
   & li {
     position: relative;
@@ -24,14 +41,48 @@ $editor-content-height: 400;
     margin: 0 3px 0;
     color: #ccc;
 
-    &:hover{
+    &:hover {
       color: darkturquoise;
     }
   }
 
   &-icon {
-    padding: 0 3px;
+    padding: 0 6px;
     cursor: pointer;
+    @extend .iconfont;
+  }
+  .icon-italic::before {
+    content: '\e643';
+  }
+  .icon-bold::before {
+    content: '\e647';
+  }
+  .icon-underline::before {
+    content: '\e644';
+  }
+  .icon-insertUnorderedList::before {
+    content: '\e8a9';
+  }
+  .icon-justifyCenter::before {
+    content: '\e64a';
+  }
+  .icon-justifyFull::before {
+    content: '\e64c';
+  }
+  .icon-emoji::before {
+    content: '\e600';
+  }
+  .icon-image::before {
+    content: '\e639';
+  }
+  .icon-video::before {
+    content: '\e65f';
+  }
+  .icon-link::before{
+    content: '\e615';
+  }
+  .icon-insertHorizontalRule::before{
+    content: '\e6c7';
   }
   &-label {
     input {
@@ -40,10 +91,35 @@ $editor-content-height: 400;
       width: 100%;
       height: 100%;
       cursor: pointer;
-
     }
-    input:checked + span {
-      color: cornflowerblue;
+    input:checked {
+      & + span {
+        color: lightblue;
+      }
+      & + .icon-italic::before {
+        content: '\e646';
+      }
+      & + .icon-bold::before {
+        content: '\e648';
+      }
+      & + .icon-underline::before {
+        content: '\e645';
+      }
+      & + .icon-insertUnorderedList::before {
+        content: '\e601';
+      }
+      & + .icon-justifyCenter::before {
+        content: '\e649';
+      }
+      & + .icon-justifyFull::before {
+        content: '\e64b';
+      }
+      & + .icon-emoji::before {
+        content: '\e700';
+      }
+      & + .icon-link::before{
+        content: '\e6b0';
+      }
     }
   }
 }
@@ -100,7 +176,7 @@ $editor-content-height: 400;
 }
 
 .editor-content {
-  &-box{
+  &-box {
     position: relative;
     width: 100%;
     height: $editor-content-height + px;
@@ -111,7 +187,7 @@ $editor-content-height: 400;
   width: 100%;
   min-height: 100%;
   outline: none;
-  &-img{
+  &-img {
     display: block;
     margin: 10px auto;
   }
@@ -135,3 +211,5 @@ $editor-content-height: 400;
     transform-origin: 50% 0;
   }
 }
+
+

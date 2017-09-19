@@ -17,73 +17,71 @@
         <li>
             <label class="editor-nav-label">
                 <input type="checkbox" data-type="italic" value="italic" onchange="execCommandFun('italic')">
-                <span class="editor-nav-icon">斜体</span>
+                <span class="editor-nav-icon icon-italic"></span>
             </label>
         </li>
         <li>
             <label class="editor-nav-label">
                 <input type="checkbox" data-type="bold" value="bold" onchange="execCommandFun('bold')">
-                <span class="editor-nav-icon">粗体</span>
+                <span class="editor-nav-icon icon-bold"></span>
             </label>
         </li>
         <li>
             <label class="editor-nav-label">
                 <input type="checkbox" data-type="underline" value="underline" onchange="execCommandFun('underline')">
-                <span class="editor-nav-icon">下划线</span>
-
+                <span class="editor-nav-icon icon-underline"></span>
             </label>
         </li>
         <li>
             <label class="editor-nav-label">
                 <input type="checkbox" data-type="insertUnorderedList" value="insertUnorderedList" onchange="execCommandFun('insertUnorderedList')">
-                <span class="editor-nav-icon">列表</span>
+                <span class="editor-nav-icon icon-insertUnorderedList"></span>
 
             </label>
         </li>
         <li>
             <label class="editor-nav-label">
                 <input type="radio" name="editor-justify" data-type="justifyCenter" value="justifyCenter" onchange="execCommandFun('justifyCenter')">
-                <span class="editor-nav-icon">居中</span>
+                <span class="editor-nav-icon icon-justifyCenter"></span>
 
             </label>
-            <!--<span class="editor-nav-icon" onclick="execCommandFun('justifyCenter')">居中</span>-->
         </li>
         <li>
             <label class="editor-nav-label">
                 <input type="radio" name="editor-justify" data-type="justifyFull" value="justifyFull" onchange="execCommandFun('justifyFull')">
-                <span class="editor-nav-icon">对齐</span>
+                <span class="editor-nav-icon icon-justifyFull"></span>
 
             </label>
-            <!--<span class="editor-nav-icon" onclick="execCommandFun('justifyFull')">对齐</span>-->
+
         </li>
         <li>
             <label class="editor-nav-label">
                 <input type="checkbox" class="emojiIcon" onchange="editorContentFocus()"/>
-                <span class="editor-nav-icon">表情</span>
+                <span class="editor-nav-icon icon-emoji"></span>
                 <div class="editor-emoji-box" id="emojiTable"></div>
             </label>
         </li>
         <li>
             <lable class="editor-nav-label">
                 <input type="file" multiple accept="image/*" onchange="imageFileFun(this)">
-                <span class="editor-nav-icon">图片</span>
+                <span class="editor-nav-icon icon-image"></span>
             </lable>
         </li>
         <li>
             <label class="editor-nav-label">
                 <input type="file" multiple accept="video/mp4" onchange="videoFileFun(this)">
-                <span class="editor-nav-icon">视频</span>
+                <span class="editor-nav-icon icon-video"></span>
             </label>
         </li>
         <li>
             <label class="editor-nav-label">
                 <input type="checkbox" class="iframeLink"/>
-                <span class="editor-nav-icon">链接</span>
+                <span class="editor-nav-icon icon-link"></span>
 
                 <iframe class="editor-frame-link" frameborder="0" width="300" height="100" src="./editor-link.html"></iframe>
             </label>
         </li>
-        <li><span class="editor-nav-icon" onclick="execCommandFun('insertHorizontalRule')">分割线</span></li>
+        <li><span class="editor-nav-icon icon-insertHorizontalRule" onclick="execCommandFun('insertHorizontalRule')"></span></li>
     </ul>
     <div class="editor-scroll">
         <div class="editor-scroll-top"></div>
