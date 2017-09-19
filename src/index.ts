@@ -80,7 +80,13 @@ editorContent.addEventListener('mouseup', function () {
 
     let hasTag: any = [];
 
-    nodeName(focusNode,hasTag);
+    let first = getSelection().getRangeAt(0);
+
+    if (!first.collapsed) {
+        nodeName(first.commonAncestorContainer);
+    } else {
+        nodeName(focusNode);
+    }
 
     if (hasTag.length > 0) {
         let dataType = document.querySelectorAll(`[data-type]`);
@@ -95,40 +101,17 @@ editorContent.addEventListener('mouseup', function () {
         });
     }
 
-    console.dir(getSelection());
-    let first = getSelection().getRangeAt(0);
-    console.dir(first);
-
-    if (!first.collapsed) {
-        let start = first.startContainer;
-        let end = first.endContainer;
-        console.log(start != end);
-        if (start != end) {
-            console.log(end);
-            let startParentNode:any = [], endParentNode:any = [];
-            nodeName(start.parentNode, startParentNode);
-            nodeName(end.parentNode, endParentNode);
-            console.dir(startParentNode);
-            console.dir(endParentNode);
+    function nodeName(obj: any) {
+        let textAlign = obj.style.textAlign;
+        if (textAlign) {
+            hasTag.push(textAlign);
         }
-    }
-
-
-
-    function nodeName(obj: any,val:any) {
         if (obj.nodeName in checked) {
-            val.push(obj.nodeName);
-            nodeName(obj.parentNode,val);
-        } else {
-            let textAlign = obj.style.textAlign;
-            if (textAlign) {
-                val.push(textAlign);
-            }
+            hasTag.push(obj.nodeName);
+            nodeName(obj.parentNode);
         }
-
     }
-})
-;
+});
 
 
 function execCommandFun(aCommandName: string, aValueArgument: any = null) {
