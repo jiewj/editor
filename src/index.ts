@@ -37,10 +37,12 @@ function emojiHtml(response: any) {
 function addEmoji(obj: any) {
     let html = `<img src="${obj.src}" alt="${obj.alt}"/>`;
     execCommandFun('insertHTML', html);
+    rangFun();
 }
 function addLink(obj?: any) {
-    let html = `<a href="${obj.value}" target="_blank">${obj.value}</a>&nbsp;`;
+    let html = `&nbsp;<a href="${obj.value}" target="_blank">${obj.value}</a>&nbsp;`;
     execCommandFun('insertHTML', html);
+    rangFun();
 }
 function imageFileFun(obj: any) {
     const files = obj.files;
@@ -51,6 +53,7 @@ function imageFileFun(obj: any) {
         html += `<img class="editor-content-img" src="${URL.createObjectURL(files[i])}"/>`;
     }
     execCommandFun('insertHTML', html);
+    rangFun();
 }
 function videoFileFun(obj: any) {
     const files = obj.files;
@@ -61,13 +64,17 @@ function videoFileFun(obj: any) {
         html += `<video contenteditable="false" controls src="${URL.createObjectURL(files[i])}"></video>`;
     }
     execCommandFun('insertHTML', html);
+    rangFun();
 }
 
 let editorContent = document.getElementById('editorContent');
 
-editorContent.addEventListener('mouseup', function () {
+editorContent.addEventListener('mouseup', rangFun);
+
+function rangFun(){
     let focusNode = getSelection().focusNode.parentNode;
 
+    console.dir(getSelection());
     let checked = {
         'I': 'italic',
         'B': 'bold',
@@ -99,6 +106,11 @@ editorContent.addEventListener('mouseup', function () {
                 type.checked = true;
             }
         });
+    }else{
+        let checked = document.querySelectorAll('[data-type]:checked');
+        for (let i = 0; i < checked.length; i++) {
+            execCommandFun((<HTMLInputElement> checked[i]).dataset.type);
+        }
     }
 
     function nodeName(obj: any) {
@@ -111,16 +123,15 @@ editorContent.addEventListener('mouseup', function () {
             nodeName(obj.parentNode);
         }
     }
-});
-
+}
 
 function execCommandFun(aCommandName: string, aValueArgument: any = null) {
+    console.log(aCommandName)
     editorContentFocus();
     document.execCommand(aCommandName, false, aValueArgument);
 }
 function editorContentFocus() {
     editorContent.focus();
-
 }
 
 (<any> window).editorContentFocus = editorContentFocus;
