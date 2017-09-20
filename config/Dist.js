@@ -1,7 +1,7 @@
 'use strict';
 const webpack = require('webpack');
 const htmlWebpackPlugin = require('html-webpack-plugin');
-
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const WebpackBaseConfig = require('./Base');
 
 class WebpackDistConfig extends WebpackBaseConfig {
@@ -21,10 +21,17 @@ class WebpackDistConfig extends WebpackBaseConfig {
         new webpack.NoEmitOnErrorsPlugin(),
         new htmlWebpackPlugin({
           template: 'index.html',
+          filename: 'index.html',
           minify: {
             removeComments: true
           }
-        })
+        }),
+        new htmlWebpackPlugin({
+          template: 'editor-link.html',
+          filename: 'editor-link.html',
+          chunks: []
+        }),
+        new ExtractTextPlugin('style.css')
       ]
     };
   }

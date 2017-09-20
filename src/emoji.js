@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 let json = [];
+let emojiName = [];
 let emojiPath = path.resolve('./emoji');
 fs.readdirSync(emojiPath).filter(file => {
   let type = file.slice(file.indexOf('.')+1);
@@ -9,11 +10,16 @@ fs.readdirSync(emojiPath).filter(file => {
     let base64 = 'data:image/png;base64,'+ fs.readFileSync(emojiPath + '/' + file).toString('base64');
     console.log(fs.readFileSync(emojiPath + '/' + file));
     json.push({name:filename,base64:base64});
+    emojiName.push(filename);
   }
 
 });
 
 fs.writeFileSync('emoji.json',JSON.stringify(json),(err)=>{
+  if (err) throw err;
+  console.log('The file has been saved!');
+});
+fs.writeFileSync('emojiName.json',JSON.stringify(emojiName),(err)=>{
   if (err) throw err;
   console.log('The file has been saved!');
 });

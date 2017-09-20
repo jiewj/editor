@@ -1,6 +1,7 @@
 'use strict';
 const webpack = require('webpack');
 const htmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const WebpackBaseConfig = require('./Base');
 
 class WebpackDevConfig extends WebpackBaseConfig {
@@ -44,7 +45,8 @@ class WebpackDevConfig extends WebpackBaseConfig {
           template: 'editor-link.html',
           filename: 'editor-link.html',
           chunks: []
-        })
+        }),
+        new ExtractTextPlugin('style.css')
         // new webpack.optimize.CommonsChunkPlugin({
         //   name: 'vendor',
         //   minChunks: Infinity,

@@ -1,5 +1,6 @@
 'use strict';
 const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 class WebpackBaseConfig {
   constructor() {
@@ -11,7 +12,7 @@ class WebpackBaseConfig {
     return this._config;
   }
 
-  get config(){
+  get config() {
     return this._config;
   }
 
@@ -29,7 +30,7 @@ class WebpackBaseConfig {
       // importLoaders: 2,
       // localIndentName: '[name]-[local]-[hash:base64:5]',
       sourceMap: true,
-      // minimize: true
+      minimize: true
     };
 
     return {
@@ -64,37 +65,43 @@ class WebpackBaseConfig {
           },
           {
             test: /\.scss$/,
-            use: [
-              {loader: 'style-loader'},
-              {
-                loader: 'css-loader',
-                options: cssModulesQuery
-              },
-              {
-                loader: 'postcss-loader',
-                options: {
-                  config: {
-                    path: './config/postcss.config.js'
+            use: ExtractTextPlugin.extract({
+              fallback: 'style-loader',
+              use: [
+                {
+                  loader: 'css-loader',
+                  options: cssModulesQuery
+                },
+                {
+                  loader: 'postcss-loader',
+                  options: {
+                    config: {
+                      path: './config/postcss.config.js'
+                    }
                   }
-                }
-              },
-              {loader: 'sass-loader'}
-            ]
+                },
+                {loader: 'sass-loader'}
+              ]
+            })
           },
           {
-            test:/\.(png|jpg)$/,
-            use:['url-loader?limit=8192']
+            test: /\.json/,
+            use: ['json-loader']
           },
           {
-            test:/\.(eot|svg|ttf|woff)$/,
-            use:['file-loader']
+            test: /\.(png|jpg)$/,
+            use: ['url-loader?limit=8192']
+          },
+          {
+            test: /\.(eot|svg|ttf|woff)$/,
+            use: ['file-loader']
           }
         ]
       },
 
       output: {
         path: path.resolve('./dist'),
-        filename: 'js/[name].[hash].js', //[name].[chunkhash].js
+        filename: 'js/[name].js', //[name].[chunkhash].js
         // publicPath: 'http://club.com/'
       },
 
@@ -104,7 +111,7 @@ class WebpackBaseConfig {
         alias: {
           config: `${WebpackBaseConfig.srcPathAbsolute}/config/${this.env}.js`
         },
-        extensions: ['.js','.ts', '.json'],
+        extensions: ['.js', '.ts', '.json'],
         modules: [
           WebpackBaseConfig.srcPathAbsolute,
           'node_modules'
