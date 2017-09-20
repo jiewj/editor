@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en"><head><link href="style.css" rel="stylesheet"></head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>editer</title>
+    <style>
+        div {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+<body>
+<div class="editor-box">
+    <ul class="editor-nav">
+        <li>
+            <label class="editor-nav-label">
+                <input type="checkbox" data-type="italic" value="italic" onchange="execCommandFun('italic')">
+                <span class="editor-nav-icon icon-italic"></span>
+            </label>
+        </li>
+        <li>
+            <label class="editor-nav-label">
+                <input type="checkbox" data-type="bold" value="bold" onchange="execCommandFun('bold')">
+                <span class="editor-nav-icon icon-bold"></span>
+            </label>
+        </li>
+        <li>
+            <label class="editor-nav-label">
+                <input type="checkbox" data-type="underline" value="underline" onchange="execCommandFun('underline')">
+                <span class="editor-nav-icon icon-underline"></span>
+            </label>
+        </li>
+        <li>
+            <label class="editor-nav-label">
+                <input type="checkbox" data-type="insertUnorderedList" value="insertUnorderedList" onchange="execCommandFun('insertUnorderedList')">
+                <span class="editor-nav-icon icon-insertUnorderedList"></span>
+
+            </label>
+        </li>
+        <li>
+            <label class="editor-nav-label">
+                <input type="radio" name="editor-justify" data-type="justifyCenter" value="justifyCenter" onchange="execCommandFun('justifyCenter')">
+                <span class="editor-nav-icon icon-justifyCenter"></span>
+
+            </label>
+        </li>
+        <li>
+            <label class="editor-nav-label">
+                <input type="radio" name="editor-justify" data-type="justifyFull" value="justifyFull" onchange="execCommandFun('justifyFull')">
+                <span class="editor-nav-icon icon-justifyFull"></span>
+
+            </label>
+
+        </li>
+        <li>
+            <label class="editor-nav-label">
+                <input type="checkbox" class="emojiIcon" onchange="editorContentFocus()">
+                <span class="editor-nav-icon icon-emoji"></span>
+                <div class="editor-emoji-box" id="emojiTable"></div>
+            </label>
+        </li>
+        <li>
+            <lable class="editor-nav-label">
+                <input type="file" multiple="multiple" accept="image/*" onclick="editorContentFocus()" onchange="imageFileFun(this)">
+                <span class="editor-nav-icon icon-image"></span>
+            </lable>
+        </li>
+        <li>
+            <label class="editor-nav-label">
+                <input type="file" multiple="multiple" accept="video/mp4" onclick="editorContentFocus()" onchange="videoFileFun(this)">
+                <span class="editor-nav-icon icon-video"></span>
+            </label>
+        </li>
+        <li>
+            <label class="editor-nav-label">
+                <input type="checkbox" class="iframeLink">
+                <span class="editor-nav-icon icon-link"></span>
+
+                <iframe class="editor-frame-link" frameborder="0" width="300" height="100" src="./editor-link.html"></iframe>
+            </label>
+        </li>
+        <li><span class="editor-nav-icon icon-insertHorizontalRule" onclick="execCommandFun('insertHorizontalRule')"></span></li>
+    </ul>
+    <div class="editor-scroll">
+        <div class="editor-scroll-top"></div>
+    </div>
+    <div class="editor-content-box">
+        <div id="editorContent" class="editor-content" contenteditable="true">
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/main.js"></script></body>
+</head></html>
